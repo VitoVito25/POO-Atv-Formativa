@@ -12,16 +12,12 @@ class Financiamento {
     private double valorImovel;
     private double prazoFinanciamento; // Em anos
     private double taxaJurosAnual;
-    private double valorPagamentoMensal;
-    private double valorTotalPagamento;
     
     // Construtor
     public Financiamento(double valorImovel, double prazoFinanciamento, double taxaJurosAnual) {
         this.setValorImovel(valorImovel);
         this.setPrazoFinanciamento(prazoFinanciamento);
         this.setTaxaJurosAnual(taxaJurosAnual);
-        this.valorPagamentoMensal = calcularPagamentoMensal();
-        this.valorTotalPagamento = calcularTotalPagamento();
     }
 
     // Getters
@@ -37,14 +33,6 @@ class Financiamento {
         return taxaJurosAnual;
     }
 
-    public double getValorPagamentoMensal() {
-        return valorPagamentoMensal;
-    }
-
-    public double getValorTotalPagamento() {
-        return valorTotalPagamento;
-    }
-
     // Setters
     public void setValorImovel(double valorImovel) {
         this.valorImovel = valorImovel;
@@ -56,14 +44,6 @@ class Financiamento {
 
     public void setTaxaJurosAnual(double taxaJurosAnual) {
         this.taxaJurosAnual = taxaJurosAnual;
-    }
-
-    public void setValorPagamentoMensal(double valorPagamentoMensal) {
-        this.valorPagamentoMensal = valorPagamentoMensal;
-    }
-
-    public void setValorTotalPagamento(double valorTotalPagamento) {
-        this.valorTotalPagamento = valorTotalPagamento;
     }
 
     /**
@@ -108,8 +88,8 @@ class Financiamento {
         System.out.printf("Valor do Imóvel: R$ %.2f\n", getValorImovel());
         System.out.printf("Prazo do Financiamento: %.1f anos\n", getPrazoFinanciamento());
         System.out.printf("Taxa de Juros Anual: %.2f%%\n", getTaxaJurosAnual());
-        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", getValorPagamentoMensal());
-        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", getValorTotalPagamento());
+        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", calcularPagamentoMensal());
+        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", calcularTotalPagamento());
         System.out.println("#----------------------------------#");
     }
 }

@@ -18,4 +18,12 @@ public class Financiamento {
 
         return valorPagamentoMensal;
     }
+
+    public double totalPagamento() {
+        double valorPagamentoMensal = calcularPagamentoMensal();
+        double prazoFinanciamentoMeses = this.prazoFinanciamento * 12;
+        double valorTotalPagamento = prazoFinanciamentoMeses * valorPagamentoMensal;
+
+        return valorTotalPagamento;
+    }
 }

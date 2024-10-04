@@ -11,6 +11,13 @@ public class InterfaceUsuario {
 
     private Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Metodo para limpar o console
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -26,11 +33,35 @@ public class InterfaceUsuario {
         }
     }
 
+    /**
+     * Metodo para solicitar o valor total do imovel
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public double solicitaValorImovel(){
 
         System.out.println("Insira o valor total do Imovel: ");
         double valorImovel = this.scanner.nextDouble();
+        this.scanner.nextLine();
 
         return valorImovel;
+    }
+
+    /**
+     * Metodo para solicitar o valor total do imovel
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public int solicitaPrazoFinanciamento(){
+
+        System.out.println("Insira o prazo do financiamento (Em anos): ");
+        int prazoFinanciamento = this.scanner.nextInt();
+        this.scanner.nextLine();
+
+        return prazoFinanciamento;
     }
 }

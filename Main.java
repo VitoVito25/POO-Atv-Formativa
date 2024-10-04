@@ -21,6 +21,8 @@ public class Main {
         double taxaJuros = interfaceUsuario.solicitaTaxajuros();
 
         Financiamento novoFinanciamento = new Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
+
+        
         
     }
     

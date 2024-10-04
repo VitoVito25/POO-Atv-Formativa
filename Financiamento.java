@@ -9,12 +9,16 @@ public class Financiamento {
     private double valorImovel;
     private double prazoFinanciamento; // Em anos
     private double taxaJurosAnual;
+    private double valorPagamentoMensal;
+    private double valorTotalPagamento;
     
     // Constructor
     public Financiamento(double valorImovel, double prazoFinanciamento, double taxaJurosAnual ) {
         this.valorImovel = valorImovel;
         this.prazoFinanciamento = prazoFinanciamento;
         this.taxaJurosAnual = taxaJurosAnual;
+        this.valorPagamentoMensal = calcularPagamentoMensal();
+        this.valorTotalPagamento = calcularTotalPagamento();
     }
 
     /**
@@ -39,11 +43,28 @@ public class Financiamento {
      * @author Victor Renaud
      * @version 1.0
      */
-    public double totalPagamento() {
+    public double calcularTotalPagamento() {
         double valorPagamentoMensal = calcularPagamentoMensal();
         double prazoFinanciamentoMeses = this.prazoFinanciamento * 12;
         double valorTotalPagamento = prazoFinanciamentoMeses * valorPagamentoMensal;
 
         return valorTotalPagamento;
+    }
+
+    /**
+     * Metodo imprimir os detalhes do financiamento na tela
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public void imprimirDetalhesFinanciamento() {
+        System.out.println("#---- Detalhes do Financiamento ----#");
+        System.out.printf("Valor do Imóvel: R$ %.2f\n", this.valorImovel);
+        System.out.printf("Prazo do Financiamento: %.1f anos\n", this.prazoFinanciamento);
+        System.out.printf("Taxa de Juros Anual: %.2f%%\n", this.taxaJurosAnual);
+        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", this.valorPagamentoMensal);
+        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", this.valorTotalPagamento);
+        System.out.println("#----------------------------------#");
     }
 }

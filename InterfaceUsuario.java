@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -34,6 +35,17 @@ public class InterfaceUsuario {
     }
 
     /**
+     * Metodo limpar a entrada do Scanner
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public void limparEntrada() {
+        scanner.nextLine(); // Limpa a linha do buffer
+    }
+
+    /**
      * Metodo para solicitar o valor total do imovel
      * 
      * 
@@ -41,10 +53,26 @@ public class InterfaceUsuario {
      * @version 1.0
      */
     public double solicitaValorImovel(){
+        double valorImovel = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
 
-        System.out.println("Insira o valor total do Imovel: ");
-        double valorImovel = this.scanner.nextDouble();
-        this.scanner.nextLine();
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o valor total do Imovel: ");
+                valorImovel = this.scanner.nextInt();
+                this.limparEntrada();// Limpa o buffer
+                if (valorImovel < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O valor total do Imovel não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
+                this.limparEntrada();// Limpa o buffer
+            }
+        }
 
         return valorImovel;
     }
@@ -57,10 +85,26 @@ public class InterfaceUsuario {
      * @version 1.0
      */
     public int solicitaPrazoFinanciamento(){
+        int prazoFinanciamento = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
 
-        System.out.println("Insira o prazo do financiamento (Em anos): ");
-        int prazoFinanciamento = this.scanner.nextInt();
-        this.scanner.nextLine();
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o prazo do financiamento (Em anos): ");
+                prazoFinanciamento = this.scanner.nextInt();
+                this.limparEntrada();// Limpa o buffer
+                if (prazoFinanciamento < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O prazo do financiamento não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
+                this.limparEntrada();// Limpa o buffer
+            }
+        }
 
         return prazoFinanciamento;
     }
@@ -70,15 +114,32 @@ public class InterfaceUsuario {
      * 
      * 
      * @author Victor Renaud
-     * @version 1.0
+     * @version 1.1
      */
     public double solicitaTaxajuros(){
+        double taxaJurosAnual = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
 
-        System.out.println("Insira o valor da taxa de juros anual: ");
-        double taxaJurosAnual = this.scanner.nextDouble();
-        this.scanner.nextLine();
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o valor da taxa de juros anual: ");
+                taxaJurosAnual = this.scanner.nextDouble();
+                this.limparEntrada();// Limpa o buffer
+                if (taxaJurosAnual < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("A taxa de juros não pode ser negativa. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada();// Limpa o buffer
+            }
+        }
 
         return taxaJurosAnual;
+
     }
 
 

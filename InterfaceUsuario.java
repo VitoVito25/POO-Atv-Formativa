@@ -64,4 +64,22 @@ public class InterfaceUsuario {
 
         return prazoFinanciamento;
     }
+
+    /**
+     * Metodo para solicitar a taxa de juros anual
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double solicitaTaxajuros(){
+
+        System.out.println("Insira o valor da taxa de juros anual: ");
+        double taxaJurosAnual = this.scanner.nextDouble();
+        this.scanner.nextLine();
+
+        return taxaJurosAnual;
+    }
+
+
 }

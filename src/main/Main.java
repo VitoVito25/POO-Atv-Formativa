@@ -20,6 +20,8 @@ public class Main {
     public static void main(String[] args) {
         InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
 
+        ArrayList<Financiamento> listaFinanciamento = new ArrayList<>();
+
         double valorImovel = interfaceUsuario.solicitaValorImovel();
         int prazoFinanciamento = interfaceUsuario.solicitaPrazoFinanciamento();
         double taxaJuros = interfaceUsuario.solicitaTaxajuros();

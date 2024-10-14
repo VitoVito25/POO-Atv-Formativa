@@ -1,4 +1,5 @@
 package src.util;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -161,4 +162,7 @@ public class InterfaceUsuario {
         System.out.println("#----------------------------------#");
     }
 
+    public void imprimirListaFinanciamento(ArrayList<Financiamento> listaFinanciamento) {
+        int tamanhoLista = listaFinanciamento.size();
+    }
 }

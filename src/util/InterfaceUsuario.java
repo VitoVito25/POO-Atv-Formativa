@@ -1,6 +1,8 @@
 package src.util;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import src.modelo.Financiamento;
 /**
  * Classe para funções de interface do usuario
  * 
@@ -19,7 +21,7 @@ public class InterfaceUsuario {
      * @author Victor Renaud
      * @version 1.0
      */
-    public static void clearConsole() {
+    public void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 // Comando para limpar o console no Windows
@@ -142,5 +144,21 @@ public class InterfaceUsuario {
 
     }
 
+    /**
+     * Metodo imprimir os detalhes do financiamento na tela
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public void imprimirDetalhesFinanciamento(Financiamento financiamento) {
+        System.out.println("#---- Detalhes do Financiamento ----#");
+        System.out.printf("Valor do Imóvel: R$ %.2f\n", financiamento.getValorImovel());
+        System.out.printf("Prazo do Financiamento: %.1f anos\n", financiamento.getPrazoFinanciamento());
+        System.out.printf("Taxa de Juros Anual: %.2f%%\n", financiamento.getTaxaJurosAnual());
+        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", financiamento.calcularPagamentoMensal());
+        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", financiamento.calcularTotalPagamento());
+        System.out.println("#----------------------------------#");
+    }
 
 }

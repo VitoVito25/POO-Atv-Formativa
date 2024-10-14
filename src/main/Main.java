@@ -1,4 +1,5 @@
 package src.main;
+import java.util.ArrayList;
 import src.modelo.Financiamento;
 import src.util.InterfaceUsuario;
 
@@ -19,16 +20,18 @@ public class Main {
      */
     public static void main(String[] args) {
         InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
+        ArrayList<Financiamento> listaFinanciamento = new ArrayList<>(); // Lista de financiamentos
+        for(int cont = 1; cont <= 4; cont++ ) {
+            interfaceUsuario.clearConsole();
+            System.out.printf("Digite os dados do financiamento %d \n", cont);
+            double valorImovel = interfaceUsuario.solicitaValorImovel();
+            int prazoFinanciamento = interfaceUsuario.solicitaPrazoFinanciamento();
+            double taxaJuros = interfaceUsuario.solicitaTaxajuros();
 
-        ArrayList<Financiamento> listaFinanciamento = new ArrayList<>();
+            listaFinanciamento.add(new Financiamento(valorImovel, prazoFinanciamento, taxaJuros));
+        }
 
-        double valorImovel = interfaceUsuario.solicitaValorImovel();
-        int prazoFinanciamento = interfaceUsuario.solicitaPrazoFinanciamento();
-        double taxaJuros = interfaceUsuario.solicitaTaxajuros();
-
-        Financiamento novoFinanciamento = new Financiamento(valorImovel, prazoFinanciamento, taxaJuros);
-
-        novoFinanciamento.imprimirDetalhesFinanciamento();
+        
         
     }
     

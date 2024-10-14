@@ -54,8 +54,8 @@ public class Financiamento {
      */
     public double calcularPagamentoMensal() {
         double prazoFinanciamentoMeses = this.calcularPrazoMeses();
-        double taxaJurosMensal = this.calcularTaxaJurosMensal();
-        double valorPagamentoMensal = this.valorImovel / prazoFinanciamentoMeses * (1 + taxaJurosMensal);
+        double taxaJurosMensal = this.jurosDecimalMensal();
+        double valorPagamentoMensal = this.valorImovel / prazoFinanciamentoMeses * (1 + (taxaJurosMensal));
 
         return valorPagamentoMensal;
     }
@@ -83,9 +83,7 @@ public class Financiamento {
      * @version 1.0
      */
     public double calcularTaxaJurosMensal() {
-        double taxaJurosMensal = this.taxaJurosAnual / 12;
-
-        return taxaJurosMensal;
+        return (this.taxaJurosAnual / 12);
     }
 
     /**
@@ -96,9 +94,18 @@ public class Financiamento {
      * @version 1.0
      */
     public double calcularPrazoMeses() {
-        double prazoMeses = this.prazoFinanciamento * 12;
+        return (this.prazoFinanciamento * 12);
+    }
 
-        return prazoMeses;
+    /**
+     * Metodo para calcular o juros em decimal, afim de deixa-lo pronto para os calculos
+     * @return Retorna o numero de meses até o final do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double jurosDecimalMensal() {
+        return (this.calcularTaxaJurosMensal() / 100);
     }
 
 

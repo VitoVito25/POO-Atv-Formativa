@@ -22,9 +22,10 @@ public class FinanciamentoApartamento extends Financiamento{
      */
     public double calcularPagamentoMensal() {
         double prazoFinanciamentoMeses = this.calcularPrazoMeses();
-        double taxaJurosMensal = this.calcularTaxaJurosMensal();
-        double valorPagamentoMensal = this.valorImovel * Math.pow(1 + taxaJurosMensal, prazoFinanciamentoMeses)/ 
-                                      Math.pow(1 + taxaJurosMensal, prazoFinanciamentoMeses - 1);
+        double taxaJurosMensal = this.jurosDecimalMensal();
+
+        double fatorPotencia = Math.pow(1 + taxaJurosMensal, prazoFinanciamentoMeses);
+        double valorPagamentoMensal = this.valorImovel * (taxaJurosMensal * fatorPotencia) / (fatorPotencia - 1);
 
         return valorPagamentoMensal;
     }

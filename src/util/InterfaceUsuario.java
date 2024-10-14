@@ -164,5 +164,14 @@ public class InterfaceUsuario {
 
     public void imprimirListaFinanciamento(ArrayList<Financiamento> listaFinanciamento) {
         int tamanhoLista = listaFinanciamento.size();
+        double totalImoveis = 0, totalFinanciamento = 0;
+        for(int cont = 1; cont <= tamanhoLista; cont++) {
+            System.out.printf("Financiamento %d - Valor do Imovel: R$ %.2f - Valor do Financiamento: R$ %.2f \n", 
+            cont, listaFinanciamento.get(cont - 1).getValorImovel(), listaFinanciamento.get(cont - 1).calcularTotalPagamento());
+            totalImoveis += listaFinanciamento.get(cont - 1).getValorImovel();
+            totalFinanciamento += listaFinanciamento.get(cont - 1).calcularTotalPagamento();
+        }
+        System.out.printf("Total de todos os imoveis: R$ %.2f - Total de todos os financiamentos R$ %,2f",
+        totalImoveis, totalFinanciamento);
     }
 }

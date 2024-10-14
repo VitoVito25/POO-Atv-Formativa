@@ -31,7 +31,8 @@ public class Main {
             listaFinanciamento.add(new Financiamento(valorImovel, prazoFinanciamento, taxaJuros));
         }
 
-        
+        interfaceUsuario.clearConsole();
+        interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);
         
     }
     

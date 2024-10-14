@@ -68,7 +68,7 @@ public class Financiamento {
      * @version 1.0
      */
     public double calcularTotalPagamento() {
-        double valorPagamentoMensal = calcularPagamentoMensal();
+        double valorPagamentoMensal = this.calcularPagamentoMensal();
         double prazoFinanciamentoMeses = this.calcularPrazoMeses();
         double valorTotalPagamento = prazoFinanciamentoMeses * valorPagamentoMensal;
 
@@ -101,5 +101,5 @@ public class Financiamento {
         return prazoMeses;
     }
 
-    
+
 }

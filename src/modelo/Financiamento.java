@@ -53,8 +53,8 @@ public class Financiamento {
      * @version 1.0
      */
     public double calcularPagamentoMensal() {
-        double prazoFinanciamentoMeses = this.prazoFinanciamento * 12;
-        double taxaJurosMensal = this.taxaJurosAnual / 12;
+        double prazoFinanciamentoMeses = this.calcularPrazoMeses();
+        double taxaJurosMensal = this.calcularTaxaJurosMensal();
         double valorPagamentoMensal = this.valorImovel / prazoFinanciamentoMeses * (1 + taxaJurosMensal);
 
         return valorPagamentoMensal;
@@ -69,10 +69,37 @@ public class Financiamento {
      */
     public double calcularTotalPagamento() {
         double valorPagamentoMensal = calcularPagamentoMensal();
-        double prazoFinanciamentoMeses = this.prazoFinanciamento * 12;
+        double prazoFinanciamentoMeses = this.calcularPrazoMeses();
         double valorTotalPagamento = prazoFinanciamentoMeses * valorPagamentoMensal;
 
         return valorTotalPagamento;
     }
 
+    /**
+     * Metodo para calcular a taxa de juros Mensal
+     * @return Retorna a taxa de juros em meses
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double calcularTaxaJurosMensal() {
+        double taxaJurosMensal = this.taxaJurosAnual / 12;
+
+        return taxaJurosMensal;
+    }
+
+    /**
+     * Metodo para calcular o prazo do financiamento em meses
+     * @return Retorna o numero de meses até o final do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double calcularPrazoMeses() {
+        double prazoMeses = this.prazoFinanciamento * 12;
+
+        return prazoMeses;
+    }
+
+    
 }

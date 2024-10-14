@@ -4,13 +4,13 @@ package src.modelo;
  * Classe de financiamento
  * 
  * @author Victor Renaud
- * @version 1.0
+ * @version 1.1
  */
 public class Financiamento {
 
-    private double valorImovel;
-    private double prazoFinanciamento; // Em anos
-    private double taxaJurosAnual;
+    protected double valorImovel;
+    protected double prazoFinanciamento; // Em anos
+    protected double taxaJurosAnual;
     
     // Construtor
     public Financiamento(double valorImovel, double prazoFinanciamento, double taxaJurosAnual) {

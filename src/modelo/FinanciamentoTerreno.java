@@ -13,13 +13,13 @@ public class FinanciamentoTerreno extends Financiamento{
     }
 
     /**
-     * Metodo para calcular o pagamento mensal com o adicional de 2% para risco de inadimplência 
+     * Metodo para calcular o pagamento total com o adicional de 2% para risco de inadimplência 
      * @return Retorna o valor do pagamento mensal do financiamento
      * 
      * @author Victor Renaud
      * @version 1.0
      */
-    public double calcularPagamentoMensal() {
-        return (super.calcularPagamentoMensal() * 1.02);
+    public double calcularTotalPagamento() {
+        return (super.calcularTotalPagamento() * 1.02);
     }
 }

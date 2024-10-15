@@ -13,14 +13,14 @@ public class FinanciamentoCasa extends Financiamento{
     }
 
     /**
-     * Metodo para calcular o pagamento mensal com o adicional do seguro exclusivo para casa
+     * Metodo para calcular o total do valor do financiamento com o reajuste de R$80 a mais por parcela
      * @return Retorna o valor do pagamento mensal do financiamento
      * 
      * @author Victor Renaud
      * @version 1.0
      */
-    public double calcularPagamentoMensal() {
-        return (super.calcularPagamentoMensal() + 80);
+    public double calcularTotalPagamento() {
+        return (super.calcularTotalPagamento() + this.calcularPrazoMeses() * 80);
     }
 
 }

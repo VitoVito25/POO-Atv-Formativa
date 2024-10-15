@@ -46,33 +46,25 @@ public class Financiamento {
     }
 
     /**
-     * Metodo para calcular o pagamento mensal
-     * @return Retorna o valor do pagamento mensal do financiamento
-     * 
-     * @author Victor Renaud
-     * @version 1.0
-     */
-    public double calcularPagamentoMensal() {
-        double prazoFinanciamentoMeses = this.calcularPrazoMeses();
-        double taxaJurosMensal = this.jurosDecimalMensal();
-        double valorPagamentoMensal = this.valorImovel / prazoFinanciamentoMeses * (1 + (taxaJurosMensal));
-
-        return valorPagamentoMensal;
-    }
-
-    /**
      * Metodo para calcular o valor total que deve ser pago do imovel
      * @return Retorna o valor total que dever ser pago do imovel
      * 
      * @author Victor Renaud
-     * @version 1.0
+     * @version 1.1
      */
     public double calcularTotalPagamento() {
-        double valorPagamentoMensal = this.calcularPagamentoMensal();
-        double prazoFinanciamentoMeses = this.calcularPrazoMeses();
-        double valorTotalPagamento = prazoFinanciamentoMeses * valorPagamentoMensal;
-
-        return valorTotalPagamento;
+        return (valorImovel * (1 + (taxaJurosAnual / 100) * this.prazoFinanciamento));
+    }
+    
+    /**
+     * Metodo para calcular o pagamento mensal
+     * @return Retorna o valor do pagamento mensal do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public double calcularPagamentoMensal() {
+         return (this.calcularTotalPagamento() / this.calcularPrazoMeses());
     }
 
     /**

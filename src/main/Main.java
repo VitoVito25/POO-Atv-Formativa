@@ -38,9 +38,9 @@ public class Main {
             }else{
                 listaFinanciamento.add(new FinanciamentoTerreno(valorImovel, prazoFinanciamento, taxaJuros));
             }
+
         }
 
-        interfaceUsuario.clearConsole();
         interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);
         
     }

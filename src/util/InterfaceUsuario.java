@@ -145,22 +145,7 @@ public class InterfaceUsuario {
 
     }
 
-    /**
-     * Metodo imprimir os detalhes do financiamento na tela
-     * 
-     * 
-     * @author Victor Renaud
-     * @version 1.0
-     */
-    public void imprimirDetalhesFinanciamento(Financiamento financiamento) {
-        System.out.println("#---- Detalhes do Financiamento ----#");
-        System.out.printf("Valor do Imóvel: R$ %.2f\n", financiamento.getValorImovel());
-        System.out.printf("Prazo do Financiamento: %.1f anos\n", financiamento.getPrazoFinanciamento());
-        System.out.printf("Taxa de Juros Anual: %.2f%%\n", financiamento.getTaxaJurosAnual());
-        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", financiamento.calcularPagamentoMensal());
-        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", financiamento.calcularTotalPagamento());
-        System.out.println("#----------------------------------#");
-    }
+    
 
     public void imprimirListaFinanciamento(ArrayList<Financiamento> listaFinanciamento) {
         int tamanhoLista = listaFinanciamento.size();

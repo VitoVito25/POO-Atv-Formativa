@@ -270,6 +270,36 @@ public class InterfaceUsuario {
     }
 
     /**
+     * Método para solicitar o tipo de zona
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public String solicitaTipoZona() {
+        String tipoZona = "";
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o tipo de zona (residencial ou comercial): ");
+                tipoZona = this.scanner.nextLine().trim(); // Lê a entrada e remove espaços em branco
+
+                // Valida se o tipo de zona é 'residencial' ou 'comercial'
+                if (tipoZona.equalsIgnoreCase("residencial") || tipoZona.equalsIgnoreCase("comercial")) {
+                    entradaValida = true; // Marca a entrada como válida
+                } else {
+                    throw new IllegalArgumentException("Tipo de zona inválido. Deve ser 'residencial' ou 'comercial'.");
+                }
+            } catch (IllegalArgumentException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return tipoZona;
+    }
+
+    /**
      * Metodo para imprimir uma lista de financeiamentos, com o valor do imovel e financiamento
      * com a ultima linha mostrando os totais
      * 

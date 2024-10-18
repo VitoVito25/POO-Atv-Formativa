@@ -145,8 +145,76 @@ public class InterfaceUsuario {
 
     }
 
-    
+    /**
+     * Método para solicitar o número do andar
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public int solicitaNumeroAndar() {
+        int numeroAndar = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
 
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o número do andar: ");
+                numeroAndar = this.scanner.nextInt();
+                this.limparEntrada(); // Limpa o buffer
+                if (numeroAndar < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O número do andar não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return numeroAndar;
+    }
+
+    /**
+     * Método para solicitar o número de vagas na garagem
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public int solicitaNumeroVagasGaragem() {
+        int vagasGaragem = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o número de vagas na garagem: ");
+                vagasGaragem = this.scanner.nextInt();
+                this.limparEntrada(); // Limpa o buffer
+                if (vagasGaragem < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O número de vagas não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return vagasGaragem;
+    }
+
+    /**
+     * Metodo para imprimir uma lista de financeiamentos, com o valor do imovel e financiamento
+     * com a ultima linha mostrando os totais
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
     public void imprimirListaFinanciamento(ArrayList<Financiamento> listaFinanciamento) {
         int tamanhoLista = listaFinanciamento.size();
         double totalImoveis = 0, totalFinanciamento = 0;
@@ -159,4 +227,6 @@ public class InterfaceUsuario {
         System.out.printf("Total de todos os imoveis: R$ %.2f - Total de todos os financiamentos R$ %,2f",
         totalImoveis, totalFinanciamento);
     }
+
+
 }

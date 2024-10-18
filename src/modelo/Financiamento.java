@@ -107,15 +107,6 @@ public abstract class Financiamento {
      * @author Victor Renaud
      * @version 1.0
      */
-    public void imprimirDetalhesFinanciamento() {
-        System.out.println("#---- Detalhes do Financiamento ----#");
-        System.out.printf("Valor do Imóvel: R$ %.2f\n", this.getValorImovel());
-        System.out.printf("Prazo do Financiamento: %.1f anos\n", this.getPrazoFinanciamento());
-        System.out.printf("Taxa de Juros Anual: %.2f%%\n", this.getTaxaJurosAnual());
-        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", this.calcularPagamentoMensal());
-        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", this.calcularTotalPagamento());
-        System.out.println("#----------------------------------#");
-    }
-
+    public abstract void imprimirDetalhesFinanciamento();
 
 }

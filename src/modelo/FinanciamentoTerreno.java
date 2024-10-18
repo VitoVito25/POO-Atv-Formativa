@@ -7,9 +7,12 @@ package src.modelo;
  */
 public class FinanciamentoTerreno extends Financiamento{
 
+    private String tipoZona;
+
     // Construtor
-    public FinanciamentoTerreno(double valorImovel, double prazoFinanciamento, double taxaJurosAnual) {
+    public FinanciamentoTerreno(double valorImovel, double prazoFinanciamento, double taxaJurosAnual, String tipoZona) {
         super(valorImovel, prazoFinanciamento, taxaJurosAnual);
+        this.tipoZona = tipoZona;
     }
 
     /**

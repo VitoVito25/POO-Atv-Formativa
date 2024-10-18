@@ -8,9 +8,14 @@ package src.modelo;
 
 public class FinanciamentoApartamento extends Financiamento{
     
+    private int vagasGaragem;
+    private int numeroAndar;
+
     // Construtor
-    public FinanciamentoApartamento(double valorImovel, double prazoFinanciamento, double taxaJurosAnual) {
+    public FinanciamentoApartamento(double valorImovel, double prazoFinanciamento, double taxaJurosAnual, int vagasGaragem, int numeroAndar) {
         super(valorImovel, prazoFinanciamento, taxaJurosAnual);
+        this.vagasGaragem = vagasGaragem;
+        this.numeroAndar = numeroAndar;
     }
 
     /**

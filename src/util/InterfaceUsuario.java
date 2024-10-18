@@ -348,6 +348,27 @@ public class InterfaceUsuario {
     }
 
     /**
+     * Metodo para solicitar todos os dados necessarios para um financiamento de terreno
+     * 
+     * @return Financiamento de casa instanciado
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public FinanciamentoTerreno solicitaDadosTerreno() {
+
+        String tipoZona = this.solicitaTipoZona();
+        double valorImovel = this.solicitaValorImovel();
+        int prazoFinanciamento = this.solicitaPrazoFinanciamento();
+        double taxaJuros = this.solicitaTaxajuros();
+
+        FinanciamentoTerreno novoFinanciamentoTerreno = new 
+        FinanciamentoTerreno(valorImovel, prazoFinanciamento, taxaJuros, tipoZona);
+
+        return novoFinanciamentoTerreno;
+
+    }
+
+    /**
      * Metodo para imprimir uma lista de financeiamentos, com o valor do imovel e financiamento
      * com a ultima linha mostrando os totais
      * 

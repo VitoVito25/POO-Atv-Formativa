@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import src.modelo.Financiamento;
+import src.modelo.FinanciamentoApartamento;
 /**
  * Classe para funções de interface do usuario
  * 
@@ -297,6 +298,21 @@ public class InterfaceUsuario {
         }
 
         return tipoZona;
+    }
+
+    public FinanciamentoApartamento solicitaDadosApartamento() {
+
+        int numeroAndar = this.solicitaNumeroAndar();
+        int vagasGaragem = this.solicitaNumeroVagasGaragem();
+        double valorImovel = this.solicitaValorImovel();
+        int prazoFinanciamento = this.solicitaPrazoFinanciamento();
+        double taxaJuros = this.solicitaTaxajuros();
+
+        FinanciamentoApartamento novoFinanciamentoApartamento = new 
+        FinanciamentoApartamento(valorImovel, prazoFinanciamento, taxaJuros, vagasGaragem, numeroAndar);
+
+        return novoFinanciamentoApartamento;
+        
     }
 
     /**

@@ -208,6 +208,68 @@ public class InterfaceUsuario {
     }
 
     /**
+     * Método para solicitar o tamanho do terreno
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public double solicitaTamanhoTerreno() {
+        double tamanhoTerreno = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o tamanho do terreno (em metros quadrados): ");
+                tamanhoTerreno = this.scanner.nextDouble();
+                this.limparEntrada(); // Limpa o buffer
+                if (tamanhoTerreno < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O tamanho do terreno não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return tamanhoTerreno;
+    }
+
+    /**
+     * Método para solicitar a área construída
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public double solicitaAreaConstruida() {
+        double areaConstruida = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira a área construída (em metros quadrados): ");
+                areaConstruida = this.scanner.nextDouble();
+                this.limparEntrada(); // Limpa o buffer
+                if (areaConstruida < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("A área construída não pode ser negativa. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return areaConstruida;
+    }
+
+    /**
      * Metodo para imprimir uma lista de financeiamentos, com o valor do imovel e financiamento
      * com a ultima linha mostrando os totais
      * 

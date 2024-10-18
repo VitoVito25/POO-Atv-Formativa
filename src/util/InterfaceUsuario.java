@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 import src.modelo.Financiamento;
 import src.modelo.FinanciamentoApartamento;
+import src.modelo.FinanciamentoCasa;
+import src.modelo.FinanciamentoTerreno;
+
 /**
  * Classe para funções de interface do usuario
  * 
@@ -300,6 +303,13 @@ public class InterfaceUsuario {
         return tipoZona;
     }
 
+    /**
+     * Metodo para solicitar todos os dados necessarios para um financeiamento de apartamento
+     * 
+     * @return Financiamento de apartamento instanciado
+     * @author Victor Renaud
+     * @version 1.1
+     */
     public FinanciamentoApartamento solicitaDadosApartamento() {
 
         int numeroAndar = this.solicitaNumeroAndar();
@@ -312,7 +322,29 @@ public class InterfaceUsuario {
         FinanciamentoApartamento(valorImovel, prazoFinanciamento, taxaJuros, vagasGaragem, numeroAndar);
 
         return novoFinanciamentoApartamento;
-        
+
+    }
+
+    /**
+     * Metodo para solicitar todos os dados necessarios para um financiamento de casa
+     * 
+     * @return Financiamento de casa instanciado
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public FinanciamentoCasa solicitaDadosCasa() {
+
+        double tamanhoTerreno = this.solicitaTamanhoTerreno();
+        double areaConstruida = this.solicitaAreaConstruida();
+        double valorImovel = this.solicitaValorImovel();
+        int prazoFinanciamento = this.solicitaPrazoFinanciamento();
+        double taxaJuros = this.solicitaTaxajuros();
+
+        FinanciamentoCasa novoFinanciamentoCasa = new 
+        FinanciamentoCasa(valorImovel, prazoFinanciamento, taxaJuros, tamanhoTerreno, areaConstruida);
+
+        return novoFinanciamentoCasa;
+
     }
 
     /**

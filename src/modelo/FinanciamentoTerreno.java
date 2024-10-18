@@ -47,7 +47,7 @@ public class FinanciamentoTerreno extends Financiamento{
      */
     public void imprimirDetalhesFinanciamento() {
         System.out.println("#---- Detalhes do Financiamento Terreno ----#");
-        System.out.printf("Tipo da zona do terreno: %.2f m²\n", this.getTipoZona());
+        System.out.printf("Tipo da zona do terreno: %s\n", this.getTipoZona());
         System.out.printf("Valor do Imóvel: R$ %.2f\n", this.getValorImovel());
         System.out.printf("Prazo do Financiamento: %.1f anos\n", this.getPrazoFinanciamento());
         System.out.printf("Taxa de Juros Anual: %.2f%%\n", this.getTaxaJurosAnual());

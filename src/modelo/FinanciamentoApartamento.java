@@ -83,8 +83,8 @@ public class FinanciamentoApartamento extends Financiamento{
      */
     public void imprimirDetalhesFinanciamento() {
         System.out.println("#---- Detalhes do Financiamento Apartamento ----#");
-        System.out.printf("Andar: %.2f m²\n", this.getNumeroAndar());
-        System.out.printf("Vagas na garagem: %.2f m²\n", this.getVagasGaragem());
+        System.out.printf("Andar: %d \n", this.getNumeroAndar());
+        System.out.printf("Vagas na garagem: %d\n", this.getVagasGaragem());
         System.out.printf("Valor do Imóvel: R$ %.2f\n", this.getValorImovel());
         System.out.printf("Prazo do Financiamento: %.1f anos\n", this.getPrazoFinanciamento());
         System.out.printf("Taxa de Juros Anual: %.2f%%\n", this.getTaxaJurosAnual());

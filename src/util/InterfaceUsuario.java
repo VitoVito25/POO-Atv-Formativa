@@ -53,6 +53,17 @@ public class InterfaceUsuario {
     }
 
     /**
+     * Metodo para fechar o scanner
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public void fecharScanner() {
+        scanner.close();
+    }
+
+    /**
      * Metodo para solicitar o valor total do imovel
      * 
      * 

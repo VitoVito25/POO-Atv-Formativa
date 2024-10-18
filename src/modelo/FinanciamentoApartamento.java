@@ -19,6 +19,7 @@ public class FinanciamentoApartamento extends Financiamento{
      * 
      * @author Victor Renaud
      * @version 1.3
+     * @Overwrite
      */
     public double calcularPagamentoMensal() {
 
@@ -43,6 +44,7 @@ public class FinanciamentoApartamento extends Financiamento{
      * 
      * @author Victor Renaud
      * @version 1.1
+     * @Overwrite
      */
     public double calcularTotalPagamento() {
         return (this.calcularPagamentoMensal() * this.calcularPrazoMeses());

@@ -6,7 +6,7 @@ package src.modelo;
  * @author Victor Renaud
  * @version 1.1
  */
-public class Financiamento {
+public abstract class Financiamento {
 
     protected double valorImovel;
     protected double prazoFinanciamento; // Em anos

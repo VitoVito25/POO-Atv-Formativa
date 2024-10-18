@@ -18,6 +18,7 @@ public class FinanciamentoTerreno extends Financiamento{
      * 
      * @author Victor Renaud
      * @version 1.0
+     * @Overwrite
      */
     public double calcularTotalPagamento() {
         return (super.calcularTotalPagamento() * 1.02);

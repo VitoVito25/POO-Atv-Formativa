@@ -42,6 +42,21 @@ public class InterfaceUsuario {
     }
 
     /**
+     * Método para verificar se o numero é menor que zero
+     * 
+     * @return True quando é menor que zero ou False quando é igual ou maior.
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public boolean verificarMenorQueZero(double numero) {
+        if(numero < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Metodo limpar a entrada do Scanner
      * 
      * 
@@ -76,19 +91,24 @@ public class InterfaceUsuario {
 
         while (!entradaValida) {
             try {
-                System.out.println("Insira o valor total do Imovel: ");
-                valorImovel = this.scanner.nextInt();
-                this.limparEntrada();// Limpa o buffer
-                if (valorImovel < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("O valor total do Imovel não pode ser negativo. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+                System.out.println("Insira o valor total do Imóvel: ");
+                valorImovel = this.scanner.nextDouble();
+                this.limparEntrada(); // Limpa o buffer
+    
+                boolean menorQueZero = this.verificarMenorQueZero(valorImovel);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("Entrada inválida. O valor não pode ser negativo.");
                 }
+                
+                entradaValida = true; // Marca a entrada como válida
+
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
                 this.limparEntrada();// Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
+                this.limparEntrada(); // Limpa o buffer
             }
         }
 
@@ -110,17 +130,21 @@ public class InterfaceUsuario {
             try {
                 System.out.println("Insira o prazo do financiamento (Em anos): ");
                 prazoFinanciamento = this.scanner.nextInt();
-                this.limparEntrada();// Limpa o buffer
-                if (prazoFinanciamento < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("O prazo do financiamento não pode ser negativo. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+                this.limparEntrada(); // Limpa o buffer
+    
+                boolean menorQueZero = this.verificarMenorQueZero(prazoFinanciamento);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("Entrada inválida. O valor não pode ser negativo.");
                 }
+
+                entradaValida = true; // Marca a entrada como válida
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
                 this.limparEntrada();// Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
+                this.limparEntrada(); // Limpa o buffer
             }
         }
 
@@ -142,17 +166,21 @@ public class InterfaceUsuario {
             try {
                 System.out.println("Insira o valor da taxa de juros anual: ");
                 taxaJurosAnual = this.scanner.nextDouble();
-                this.limparEntrada();// Limpa o buffer
-                if (taxaJurosAnual < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("A taxa de juros não pode ser negativa. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+                this.limparEntrada(); // Limpa o buffer
+    
+                boolean menorQueZero = this.verificarMenorQueZero(taxaJurosAnual);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("Entrada inválida. O valor não pode ser negativo.");
                 }
+
+                entradaValida = true; // Marca a entrada como válida
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
                 this.limparEntrada();// Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
+                this.limparEntrada(); // Limpa o buffer
             }
         }
 
@@ -175,15 +203,19 @@ public class InterfaceUsuario {
                 System.out.println("Insira o número do andar: ");
                 numeroAndar = this.scanner.nextInt();
                 this.limparEntrada(); // Limpa o buffer
-                if (numeroAndar < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("O número do andar não pode ser negativo. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+    
+                boolean menorQueZero = this.verificarMenorQueZero(numeroAndar);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("O número do andar não pode ser negativo. Tente novamente.");
                 }
+
+                entradaValida = true; // Marca a entrada como válida
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
                 this.limparEntrada(); // Limpa o buffer
             }
         }
@@ -206,15 +238,19 @@ public class InterfaceUsuario {
                 System.out.println("Insira o número de vagas na garagem: ");
                 vagasGaragem = this.scanner.nextInt();
                 this.limparEntrada(); // Limpa o buffer
-                if (vagasGaragem < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("O número de vagas não pode ser negativo. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+    
+                boolean menorQueZero = this.verificarMenorQueZero(vagasGaragem);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("O número de vagas não pode ser negativo. Tente novamente.");
                 }
+
+                entradaValida = true; // Marca a entrada como válida
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
                 this.limparEntrada(); // Limpa o buffer
             }
         }
@@ -237,15 +273,19 @@ public class InterfaceUsuario {
                 System.out.println("Insira o tamanho do terreno (em metros quadrados): ");
                 tamanhoTerreno = this.scanner.nextDouble();
                 this.limparEntrada(); // Limpa o buffer
-                if (tamanhoTerreno < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("O tamanho do terreno não pode ser negativo. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+    
+                boolean menorQueZero = this.verificarMenorQueZero(tamanhoTerreno);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("O tamanho do terreno não pode ser negativo. Tente novamente.");
                 }
+
+                entradaValida = true; // Marca a entrada como válida
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
                 this.limparEntrada(); // Limpa o buffer
             }
         }
@@ -268,15 +308,19 @@ public class InterfaceUsuario {
                 System.out.println("Insira a área construída (em metros quadrados): ");
                 areaConstruida = this.scanner.nextDouble();
                 this.limparEntrada(); // Limpa o buffer
-                if (areaConstruida < 0) {
-                    // Caso o valor seja negativo retorna a solicitação
-                    System.out.println("A área construída não pode ser negativa. Tente novamente.");
-                } else {
-                    entradaValida = true; // Marca a entrada como válida
+    
+                boolean menorQueZero = this.verificarMenorQueZero(areaConstruida);
+                if (menorQueZero) {
+                    throw new MenorQueZeroException("A área construída não pode ser negativa. Tente novamente.");
                 }
+
+                entradaValida = true; // Marca a entrada como válida
             } catch (InputMismatchException e) {
                 // Em caso de erro, a solicitação é feita novamente
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            } catch (MenorQueZeroException e) {
+                System.out.println(e.getMessage());
                 this.limparEntrada(); // Limpa o buffer
             }
         }

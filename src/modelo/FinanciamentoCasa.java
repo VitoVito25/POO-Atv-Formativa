@@ -1,4 +1,7 @@
 package src.modelo;
+
+import src.util.DescontoMaiorDoQueJurosException;
+
 /**
  * Classe de financiamento especifico para Casas
  * 
@@ -21,18 +24,49 @@ public class FinanciamentoCasa extends Financiamento{
     public double getTamanhoTerreno() {
         return tamanhoTerreno;
     }
-    
-    public void setTamanhoTerreno(double tamanhoTerreno) {
-        this.tamanhoTerreno = tamanhoTerreno;
-    }
-    
-    // Setters
+
     public double getAreaConstruida() {
         return areaConstruida;
     }
     
+    // Setters
+    public void setTamanhoTerreno(double tamanhoTerreno) {
+        this.tamanhoTerreno = tamanhoTerreno;
+    }
+    
     public void setAreaConstruida(double areaConstruida) {
         this.areaConstruida = areaConstruida;
+    }
+
+    /**
+     * Metodo para calcular o valor do desconto.
+     * @return Retorna o valor do pagamento mensal do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double calcularMensalidade() {
+        double taxaJurosMensal = taxaJurosAnual / 100 / 12;
+        return (valorImovel / (prazoFinanciamento * 12)) * (1 + taxaJurosMensal);
+    }
+
+    /**
+     * Metodo para aplicar o desconto.
+     * @return Retorna o valor do pagamento mensal do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double aplicarDesconto(double desconto) throws DescontoMaiorDoQueJurosException {
+        double mensalidade = calcularMensalidade();
+        double jurosMensal = (valorImovel * (taxaJurosAnual / 100)) / 12;
+
+        if (desconto > jurosMensal) { // Verifica se o desconto é maior do que o valor dos juros mensais.
+            throw new DescontoMaiorDoQueJurosException(
+                    "O valor do desconto não pode ser maior do que o valor dos juros mensais.");
+        }
+
+        return mensalidade - desconto;
     }
 
     /**

@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import src.modelo.Financiamento;
-import src.modelo.FinanciamentoCasa;
-import src.modelo.FinanciamentoApartamento;
-import src.modelo.FinanciamentoTerreno;
 import src.util.InterfaceUsuario;
 
 /**

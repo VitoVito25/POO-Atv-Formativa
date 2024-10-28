@@ -4,6 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import src.modelo.Financiamento;
+import src.modelo.FinanciamentoApartamento;
+import src.modelo.FinanciamentoCasa;
+import src.modelo.FinanciamentoTerreno;
+
 /**
  * Classe para funções de interface do usuario
  * 
@@ -46,6 +50,17 @@ public class InterfaceUsuario {
      */
     public void limparEntrada() {
         scanner.nextLine(); // Limpa a linha do buffer
+    }
+
+    /**
+     * Metodo para fechar o scanner
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public void fecharScanner() {
+        scanner.close();
     }
 
     /**
@@ -146,22 +161,232 @@ public class InterfaceUsuario {
     }
 
     /**
-     * Metodo imprimir os detalhes do financiamento na tela
+     * Método para solicitar o número do andar
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public int solicitaNumeroAndar() {
+        int numeroAndar = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o número do andar: ");
+                numeroAndar = this.scanner.nextInt();
+                this.limparEntrada(); // Limpa o buffer
+                if (numeroAndar < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O número do andar não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return numeroAndar;
+    }
+
+    /**
+     * Método para solicitar o número de vagas na garagem
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public int solicitaNumeroVagasGaragem() {
+        int vagasGaragem = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o número de vagas na garagem: ");
+                vagasGaragem = this.scanner.nextInt();
+                this.limparEntrada(); // Limpa o buffer
+                if (vagasGaragem < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O número de vagas não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return vagasGaragem;
+    }
+
+    /**
+     * Método para solicitar o tamanho do terreno
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public double solicitaTamanhoTerreno() {
+        double tamanhoTerreno = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o tamanho do terreno (em metros quadrados): ");
+                tamanhoTerreno = this.scanner.nextDouble();
+                this.limparEntrada(); // Limpa o buffer
+                if (tamanhoTerreno < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("O tamanho do terreno não pode ser negativo. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return tamanhoTerreno;
+    }
+
+    /**
+     * Método para solicitar a área construída
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public double solicitaAreaConstruida() {
+        double areaConstruida = 0;
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira a área construída (em metros quadrados): ");
+                areaConstruida = this.scanner.nextDouble();
+                this.limparEntrada(); // Limpa o buffer
+                if (areaConstruida < 0) {
+                    // Caso o valor seja negativo retorna a solicitação
+                    System.out.println("A área construída não pode ser negativa. Tente novamente.");
+                } else {
+                    entradaValida = true; // Marca a entrada como válida
+                }
+            } catch (InputMismatchException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println("Entrada inválida. Por favor, insira um número válido.");
+                this.limparEntrada(); // Limpa o buffer
+            }
+        }
+
+        return areaConstruida;
+    }
+
+    /**
+     * Método para solicitar o tipo de zona
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public String solicitaTipoZona() {
+        String tipoZona = "";
+        boolean entradaValida = false; // Variável de controle para validar a entrada
+
+        while (!entradaValida) {
+            try {
+                System.out.println("Insira o tipo de zona (residencial ou comercial): ");
+                tipoZona = this.scanner.nextLine().trim(); // Lê a entrada e remove espaços em branco
+
+                // Valida se o tipo de zona é 'residencial' ou 'comercial'
+                if (tipoZona.equalsIgnoreCase("residencial") || tipoZona.equalsIgnoreCase("comercial")) {
+                    entradaValida = true; // Marca a entrada como válida
+                } else {
+                    throw new IllegalArgumentException("Tipo de zona inválido. Deve ser 'residencial' ou 'comercial'.");
+                }
+            } catch (IllegalArgumentException e) {
+                // Em caso de erro, a solicitação é feita novamente
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return tipoZona;
+    }
+
+    /**
+     * Metodo para solicitar todos os dados necessarios para um financeiamento de apartamento
+     * 
+     * @return Financiamento de apartamento instanciado
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public FinanciamentoApartamento solicitaDadosApartamento() {
+
+        int numeroAndar = this.solicitaNumeroAndar();
+        int vagasGaragem = this.solicitaNumeroVagasGaragem();
+        double valorImovel = this.solicitaValorImovel();
+        int prazoFinanciamento = this.solicitaPrazoFinanciamento();
+        double taxaJuros = this.solicitaTaxajuros();
+
+        FinanciamentoApartamento novoFinanciamentoApartamento = new 
+        FinanciamentoApartamento(valorImovel, prazoFinanciamento, taxaJuros, vagasGaragem, numeroAndar);
+
+        return novoFinanciamentoApartamento;
+
+    }
+
+    /**
+     * Metodo para solicitar todos os dados necessarios para um financiamento de casa
+     * 
+     * @return Financiamento de casa instanciado
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public FinanciamentoCasa solicitaDadosCasa() {
+
+        double tamanhoTerreno = this.solicitaTamanhoTerreno();
+        double areaConstruida = this.solicitaAreaConstruida();
+        double valorImovel = this.solicitaValorImovel();
+        int prazoFinanciamento = this.solicitaPrazoFinanciamento();
+        double taxaJuros = this.solicitaTaxajuros();
+
+        FinanciamentoCasa novoFinanciamentoCasa = new 
+        FinanciamentoCasa(valorImovel, prazoFinanciamento, taxaJuros, tamanhoTerreno, areaConstruida);
+
+        return novoFinanciamentoCasa;
+
+    }
+
+    /**
+     * Metodo para solicitar todos os dados necessarios para um financiamento de terreno
+     * 
+     * @return Financiamento de casa instanciado
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public FinanciamentoTerreno solicitaDadosTerreno() {
+
+        String tipoZona = this.solicitaTipoZona();
+        double valorImovel = this.solicitaValorImovel();
+        int prazoFinanciamento = this.solicitaPrazoFinanciamento();
+        double taxaJuros = this.solicitaTaxajuros();
+
+        FinanciamentoTerreno novoFinanciamentoTerreno = new 
+        FinanciamentoTerreno(valorImovel, prazoFinanciamento, taxaJuros, tipoZona);
+
+        return novoFinanciamentoTerreno;
+
+    }
+
+    /**
+     * Metodo para imprimir uma lista de financeiamentos, com o valor do imovel e financiamento
+     * com a ultima linha mostrando os totais
      * 
      * 
      * @author Victor Renaud
-     * @version 1.0
+     * @version 1.1
      */
-    public void imprimirDetalhesFinanciamento(Financiamento financiamento) {
-        System.out.println("#---- Detalhes do Financiamento ----#");
-        System.out.printf("Valor do Imóvel: R$ %.2f\n", financiamento.getValorImovel());
-        System.out.printf("Prazo do Financiamento: %.1f anos\n", financiamento.getPrazoFinanciamento());
-        System.out.printf("Taxa de Juros Anual: %.2f%%\n", financiamento.getTaxaJurosAnual());
-        System.out.printf("Valor do Pagamento Mensal: R$ %.2f\n", financiamento.calcularPagamentoMensal());
-        System.out.printf("Valor Total a ser Pago: R$ %.2f\n", financiamento.calcularTotalPagamento());
-        System.out.println("#----------------------------------#");
-    }
-
     public void imprimirListaFinanciamento(ArrayList<Financiamento> listaFinanciamento) {
         int tamanhoLista = listaFinanciamento.size();
         double totalImoveis = 0, totalFinanciamento = 0;
@@ -174,4 +399,6 @@ public class InterfaceUsuario {
         System.out.printf("Total de todos os imoveis: R$ %.2f - Total de todos os financiamentos R$ %,2f",
         totalImoveis, totalFinanciamento);
     }
+
+
 }

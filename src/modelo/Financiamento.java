@@ -4,13 +4,13 @@ package src.modelo;
  * Classe de financiamento
  * 
  * @author Victor Renaud
- * @version 1.0
+ * @version 1.1
  */
-public class Financiamento {
+public abstract class Financiamento {
 
-    private double valorImovel;
-    private double prazoFinanciamento; // Em anos
-    private double taxaJurosAnual;
+    protected double valorImovel;
+    protected double prazoFinanciamento; // Em anos
+    protected double taxaJurosAnual;
     
     // Construtor
     public Financiamento(double valorImovel, double prazoFinanciamento, double taxaJurosAnual) {
@@ -46,33 +46,67 @@ public class Financiamento {
     }
 
     /**
-     * Metodo para calcular o pagamento mensal
-     * @return Retorna o valor do pagamento mensal do financiamento
-     * 
-     * @author Victor Renaud
-     * @version 1.0
-     */
-    public double calcularPagamentoMensal() {
-        double prazoFinanciamentoMeses = this.prazoFinanciamento * 12;
-        double taxaJurosMensal = this.taxaJurosAnual / 12;
-        double valorPagamentoMensal = this.valorImovel / prazoFinanciamentoMeses * (1 + taxaJurosMensal);
-
-        return valorPagamentoMensal;
-    }
-
-    /**
      * Metodo para calcular o valor total que deve ser pago do imovel
      * @return Retorna o valor total que dever ser pago do imovel
      * 
      * @author Victor Renaud
-     * @version 1.0
+     * @version 1.1
      */
     public double calcularTotalPagamento() {
-        double valorPagamentoMensal = calcularPagamentoMensal();
-        double prazoFinanciamentoMeses = this.prazoFinanciamento * 12;
-        double valorTotalPagamento = prazoFinanciamentoMeses * valorPagamentoMensal;
-
-        return valorTotalPagamento;
+        return (valorImovel * (1 + (taxaJurosAnual / 100) * this.prazoFinanciamento));
     }
+    
+    /**
+     * Metodo para calcular o pagamento mensal
+     * @return Retorna o valor do pagamento mensal do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public double calcularPagamentoMensal() {
+         return (this.calcularTotalPagamento() / this.calcularPrazoMeses());
+    }
+
+    /**
+     * Metodo para calcular a taxa de juros Mensal
+     * @return Retorna a taxa de juros em meses
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double calcularTaxaJurosMensal() {
+        return (this.taxaJurosAnual / 12);
+    }
+
+    /**
+     * Metodo para calcular o prazo do financiamento em meses
+     * @return Retorna o numero de meses até o final do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double calcularPrazoMeses() {
+        return (this.prazoFinanciamento * 12);
+    }
+
+    /**
+     * Metodo para calcular o juros em decimal, afim de deixa-lo pronto para os calculos
+     * @return Retorna o numero de meses até o final do financiamento
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public double jurosDecimalMensal() {
+        return (this.calcularTaxaJurosMensal() / 100);
+    }
+
+    /**
+     * Metodo imprimir os detalhes do financiamento na tela
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public abstract void imprimirDetalhesFinanciamento();
 
 }

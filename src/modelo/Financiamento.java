@@ -1,13 +1,16 @@
 package src.modelo;
 
+import java.io.Serializable;
+
 /**
  * Classe de financiamento
  * 
  * @author Victor Renaud
  * @version 1.1
  */
-public abstract class Financiamento {
+public abstract class Financiamento implements Serializable{
 
+    private static final long serialVersionUID = 1L; // Versão da classe, importante para garantir compatibilidade
     protected double valorImovel;
     protected double prazoFinanciamento; // Em anos
     protected double taxaJurosAnual;

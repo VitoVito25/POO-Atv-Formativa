@@ -6,10 +6,13 @@ import src.modelo.*;
 import src.util.InterfaceUsuario;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystemNotFoundException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * Classe principal do programa
@@ -68,6 +71,10 @@ public class Main {
 
         interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);
 
+        scanner.nextLine();
+        interfaceUsuario.clearConsole();
+
+        // Escrita e leitura em arquivo TXT
         FileWriter writer = null; // Para escrever no arquivo
 
         try {
@@ -109,27 +116,30 @@ public class Main {
                 }
             }
         }     
+        scanner.nextLine();
+        interfaceUsuario.clearConsole();
+
+        // Serialização
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("financiamentosSerializados.fin"))){
+            out.writeObject(listaFinanciamento);
+        } catch (IOException  e) {
+            System.out.println("Erro ao serializar: " + e.getMessage());
+        }
+
+        // Desserialização
+        ArrayList<Financiamento> listaFinanciamentoDesserializada = null;
         
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("financiamentosSerializados.fin"))) {
+            listaFinanciamentoDesserializada = (ArrayList<Financiamento>) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Erro ao desserializar: " + e.getMessage());
+        }
+
+        interfaceUsuario.imprimirListaFinanciamento(listaFinanciamentoDesserializada);
+        scanner.nextLine();
+        interfaceUsuario.clearConsole();
+
         scanner.close();
     }
 }
 
-
-
-        /*do {
-            
-        } while (condition:var(boolean));
-        for(int cont = 1; cont <= 5; cont++ ) {
-            if(cont <=2) {
-                listaFinanciamento.add(new FinanciamentoCasa(valorImovel, prazoFinanciamento, taxaJuros));
-            }else if(cont <= 4) {
-                listaFinanciamento.add(new FinanciamentoApartamento(valorImovel, prazoFinanciamento, taxaJuros));
-            }else{
-                listaFinanciamento.add(new FinanciamentoTerreno(valorImovel, prazoFinanciamento, taxaJuros));
-            }
-
-        }
-
-        interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);
-        */
-    

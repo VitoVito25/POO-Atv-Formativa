@@ -66,8 +66,23 @@ public class Main {
 
         interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);
 
+        FileWriter writer = null; // Para escrever no arquivo
 
+        try {
+            writer = new FileWriter("financiamentos.txt"); // Para escrever no arquivo
 
+            for(Financiamento financiamento : listaFinanciamento) {
+                writer.write(financiamento.toString() + "\n\n");
+            }
+            String rodape = interfaceUsuario.toStringTotaisFinanciamentos(listaFinanciamento);
+            writer.write(rodape);
+            
+            writer.flush();
+            writer.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        
         scanner.close();
     }
 }

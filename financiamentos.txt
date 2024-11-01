@@ -1,0 +1,60 @@
+#---- Detalhes do Financiamento Casa ----#
+Tamanho do terreno: 1,00 m²
+Área construída: 1,00 m²
+Valor do Imóvel: R$ 1,00
+Prazo do Financiamento: 1,0 anos
+Taxa de Juros Anual: 1,00%
+Valor do Pagamento Mensal: R$ 80,08
+Valor Total a ser Pago: R$ 961,01
+#----------------------------------#
+
+#---- Detalhes do Financiamento Casa ----#
+Tamanho do terreno: 40,00 m²
+Área construída: 80,00 m²
+Valor do Imóvel: R$ 330000,00
+Prazo do Financiamento: 15,0 anos
+Taxa de Juros Anual: 10,00%
+Valor do Pagamento Mensal: R$ 4663,33
+Valor Total a ser Pago: R$ 839400,00
+#----------------------------------#
+
+#---- Detalhes do Financiamento Casa ----#
+Tamanho do terreno: 70,00 m²
+Área construída: 100,00 m²
+Valor do Imóvel: R$ 500000,00
+Prazo do Financiamento: 10,0 anos
+Taxa de Juros Anual: 10,00%
+Valor do Pagamento Mensal: R$ 8413,33
+Valor Total a ser Pago: R$ 1009600,00
+#----------------------------------#
+
+#---- Detalhes do Financiamento Apartamento ----#
+Andar: 5 
+Vagas na garagem: 2
+Valor do Imóvel: R$ 500000,00
+Prazo do Financiamento: 10,0 anos
+Taxa de Juros Anual: 10,00%
+Valor do Pagamento Mensal: R$ 6607,54
+Valor Total a ser Pago: R$ 792904,42
+#----------------------------------#
+
+#---- Detalhes do Financiamento Apartamento ----#
+Andar: 10 
+Vagas na garagem: 3
+Valor do Imóvel: R$ 320000,00
+Prazo do Financiamento: 10,0 anos
+Taxa de Juros Anual: 10,00%
+Valor do Pagamento Mensal: R$ 4228,82
+Valor Total a ser Pago: R$ 507458,83
+#----------------------------------#
+
+#---- Detalhes do Financiamento Terreno ----#
+Tipo da zona do terreno: Urbano
+Valor do Imóvel: R$ 500000,00
+Prazo do Financiamento: 10,0 anos
+Taxa de Juros Anual: 10,00%
+Valor do Pagamento Mensal: R$ 8500,00
+Valor Total a ser Pago: R$ 1020000,00
+#----------------------------------#
+
+Total de todos os imóveis: R$ 2150001,00 - Total de todos os financiamentos: R$ 4170324,26

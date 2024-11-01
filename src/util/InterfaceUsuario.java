@@ -444,5 +444,25 @@ public class InterfaceUsuario {
         totalImoveis, totalFinanciamento);
     }
 
+    /**
+     * Metodo para retornar apenas valores totais dos financiamentos em String
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.1
+     */
+    public String toStringTotaisFinanciamentos(ArrayList<Financiamento> listaFinanciamento) {
+        int tamanhoLista = listaFinanciamento.size();
+        double totalImoveis = 0, totalFinanciamento = 0;
+        for(int cont = 1; cont <= tamanhoLista; cont++) {
+            totalImoveis += listaFinanciamento.get(cont - 1).getValorImovel();
+            totalFinanciamento += listaFinanciamento.get(cont - 1).calcularTotalPagamento();
+        }
+        String texto = String.format("Total de todos os imóveis: R$ %.2f - Total de todos os financiamentos: R$ %.2f",
+        totalImoveis, totalFinanciamento);
+
+        return texto;
+    }
+
 
 }

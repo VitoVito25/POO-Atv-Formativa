@@ -5,6 +5,8 @@ import java.util.Scanner;
 import src.modelo.*;
 import src.util.InterfaceUsuario;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystemNotFoundException;
@@ -82,6 +84,31 @@ public class Main {
         } catch (Exception e){
             e.printStackTrace();
         }
+
+        interfaceUsuario.clearConsole();
+
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("financiamentos.txt"));
+            String linha;
+            StringBuilder conteudoArquivo = new StringBuilder();
+        
+            while ((linha = reader.readLine()) != null) {
+                conteudoArquivo.append(linha).append("\n");
+            }
+        
+            System.out.println(conteudoArquivo.toString()); // Exibe o conteúdo do arquivo
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println("Erro ao fechar o arquivo: " + e.getMessage());
+                }
+            }
+        }     
         
         scanner.close();
     }

@@ -2,8 +2,12 @@ package src.main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import src.modelo.Financiamento;
+import src.modelo.*;
 import src.util.InterfaceUsuario;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.FileSystemNotFoundException;
 
 /**
  * Classe principal do programa
@@ -33,9 +37,7 @@ public class Main {
             System.out.println("1 - Financiamento de Casa");
             System.out.println("2 - Financiamento de Apartamento");
             System.out.println("3 - Financiamento de Terreno");
-            System.out.println("4 - Imprimir lista de financiamentos");
-            System.out.println("9 - Sair do sistema");
-            System.out.print("Escolha uma opção (1-4, 9 para sair): ");
+            System.out.print("Escolha uma opção (1-3): ");
             
             opcao = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
@@ -50,16 +52,22 @@ public class Main {
                 case 3:
                     listaFinanciamento.add(interfaceUsuario.solicitaDadosTerreno());
                     break;
-                case 4:
-                    interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);;
-                    break;
-                case 9:
-                    System.out.println("Saindo do sistema. Obrigado!");
-                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
-        } while (opcao != 9);
+        } while (opcao < 1 || opcao > 3);
+
+        // Adicionando os financimentos direto no código
+        listaFinanciamento.add(new FinanciamentoCasa(330000, 15, 10, 40, 80));
+        listaFinanciamento.add(new FinanciamentoCasa(500000, 10, 10, 70, 100));
+        listaFinanciamento.add(new FinanciamentoApartamento(500000, 10, 10, 2, 5));
+        listaFinanciamento.add(new FinanciamentoApartamento(320000, 10, 10, 3, 10));
+        listaFinanciamento.add(new FinanciamentoTerreno(500000, 10, 10, "Urbano"));
+
+        interfaceUsuario.imprimirListaFinanciamento(listaFinanciamento);
+
+
+
         scanner.close();
     }
 }

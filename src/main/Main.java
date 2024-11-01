@@ -37,7 +37,7 @@ public class Main {
             System.out.println("1 - Financiamento de Casa");
             System.out.println("2 - Financiamento de Apartamento");
             System.out.println("3 - Financiamento de Terreno");
-            System.out.print("Escolha uma opção (1-3): ");
+            System.out.print("Escolha uma opção (1-3): \n");
             
             opcao = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer

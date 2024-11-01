@@ -93,4 +93,25 @@ public class FinanciamentoApartamento extends Financiamento{
         System.out.println("#----------------------------------#");
     }
     
+    /**
+     * Método que retorna os detalhes do financiamento em uma String
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
+    public String toString() {
+        StringBuilder detalhes = new StringBuilder();
+        
+        detalhes.append("#---- Detalhes do Financiamento Apartamento ----#\n");
+        detalhes.append(String.format("Andar: %d \n", this.getNumeroAndar()));
+        detalhes.append(String.format("Vagas na garagem: %d\n", this.getVagasGaragem()));
+        detalhes.append(String.format("Valor do Imóvel: R$ %.2f\n", this.getValorImovel()));
+        detalhes.append(String.format("Prazo do Financiamento: %.1f anos\n", this.getPrazoFinanciamento()));
+        detalhes.append(String.format("Taxa de Juros Anual: %.2f%%\n", this.getTaxaJurosAnual()));
+        detalhes.append(String.format("Valor do Pagamento Mensal: R$ %.2f\n", this.calcularPagamentoMensal()));
+        detalhes.append(String.format("Valor Total a ser Pago: R$ %.2f\n", this.calcularTotalPagamento()));
+        detalhes.append("#----------------------------------#");
+
+        return detalhes.toString();
+    }
 }
